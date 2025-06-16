@@ -109,9 +109,9 @@ void executar_rodada(int rodada) {
     jogo.jogador_inicial_mao = jogo.jogador_inicial_rodada;
 }
 
-void imprimir_resultado_final() {
+void imprimir_resultado_final(Jogo* jogo, int* placar) {
     printf("Resultado Final:\n");
-    for (int j = 0; j < jogo.num_jogadores; j++) {
-        printf("%s:\t%d\n", jogo.nomes[j], jogo.penalidades[j]);
-    }
+    for (int j = 0; j < jogo->num_jogadores; j++)
+        printf("%s:\t%d\n", jogo->nomes[j], placar[j]);
+}
 }
