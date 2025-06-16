@@ -33,6 +33,6 @@ void jogar_rodada(Rodada* r);
 extern void iniciar_jogadores();
 extern void informar_maos_para_jogadores(int rodada, const Rodada* r);
 extern void coletar_apostas(Rodada* r);
-extern int processar_jogadas(Rodada* r, Jo*_
+extern int processar_jogadas(Rodada* r, Jogada* jogadas);
 
 #endif
