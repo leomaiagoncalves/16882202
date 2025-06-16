@@ -6,7 +6,7 @@
 static int meu_id;
 static int total_jogadores;
 static int rodada_atual;
-static Carta carta_manilha;
+static Valor carta_manilha;
 static int n_cartas_mao;
 static Carta minha_mao[6];
 
