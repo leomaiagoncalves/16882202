@@ -17,6 +17,12 @@
 
 Jogo jogo;
 
+// corrigindo erro de warning
+void embaralhar_e_distribuir_maos(Jogo* jogo);
+void processar_resultado_turno(Rodada* r, Jogada* jogadas);
+void atualizar_pontuacoes(Rodada* r);
+void imprimir_resultado_final(Jogo* jogo);
+
 void iniciar_jogadores() {
     jogo.nomes[0] = nome_aleatorio1();
     jogo.nomes[1] = nome_aleatorio2();
@@ -63,15 +69,19 @@ void coletar_apostas(Rodada* r) {
 
 int processar_jogadas(Rodada* r, Jogada* jogadas) {
     int novo_jogador_inicial = jogo.jogador_inicial_mao;
+    int cartas_jogadas[NUM_JOGADORES] = {0}; // cartas jogadas por cada jogador nesta mão
 
     for (int i = 0; i < jogo.num_jogadores; i++) {
         int j = (jogo.jogador_inicial_mao + i) % NUM_JOGADORES;
         int idx = -1;
+        int n_cartas_restantes = r->cartas_restantes[j];
 
         if (j == 0) idx = jogar_aleatorio1((Carta*) jogadas, i);
         else if (j == 1) idx = jogar_aleatorio2((Carta*) jogadas, i);
         else if (j == 2) idx = jogar_simples((Carta*) jogadas, i);
         else if (j == 3) idx = jogar_jogador_16882202((Carta*) jogadas, i, cartas_jogadas, n_cartas_restantes);
+
+        cartas_jogadas[j]++;
 
         if (checar_e_processar_descarte(idx, j, r, jogadas)) {
             printf("Jogador %s tentou descartar uma carta inválida e foi eliminado!\n", jogo.nomes[j]);
