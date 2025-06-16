@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "jogo.h"
 #include "baralho.h"
 #include "rodada.h"
@@ -11,8 +12,8 @@
 #include "jogadores/simples.h"
 #include "jogadores/jogador_16882202.h"
 
-
 #define NUM_JOGADORES 4
+#define NUM_RODADAS 5
 
 Jogo jogo;
 
@@ -30,6 +31,7 @@ void iniciar_jogadores() {
     memset(jogo.penalidades, 0, sizeof(jogo.penalidades));
     jogo.jogador_inicial_mao = jogo.jogador_inicial_rodada = 0;
     jogo.num_jogadores = NUM_JOGADORES;
+    jogo.num_rodadas = NUM_RODADAS;
 }
 
 void informar_maos_para_jogadores(int rodada, const Rodada* r) {
@@ -69,7 +71,14 @@ int processar_jogadas(Rodada* r, Jogada* jogadas) {
         if (j == 0) idx = jogar_aleatorio1(jogadas, i);
         else if (j == 1) idx = jogar_aleatorio2(jogadas, i);
         else if (j == 2) idx = jogar_simples(jogadas, i);
-        else if (j == 3) idx = jogar_jogador_16882202(jogadas, i);
+        else if (j == 3) {
+            idx = jogar_jogador_16882202(
+                r->mesa,
+                r->num_na_mesa,
+                r->cartas_jogadas,
+                r->cartas_por_jogador
+            );
+        }
 
         if (checar_e_processar_descarte(idx, j, r, jogadas)) {
             printf("Jogador %s tentou descartar uma carta inválida e foi eliminado!\n", jogo.nomes[j]);
