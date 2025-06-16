@@ -1,4 +1,4 @@
-#include "cartas.h"
+#include "carta.h"
 #include "rodada.h"
 #include "baralho.h"
 #include <stdio.h>
