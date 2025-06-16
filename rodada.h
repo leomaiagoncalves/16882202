@@ -1,7 +1,7 @@
 #ifndef RODADA_H
 #define RODADA_H
 
-#include "cartas.h"
+#include "carta.h"
 
 typedef struct {
     int numero;
