@@ -3,6 +3,8 @@
 #include <time.h>
 #include "../mao.h"
 
+Carta definir_manilha(Carta carta_virada);
+
 static int meu_id;
 static int total_jogadores;
 static int rodada_atual;
@@ -25,7 +27,7 @@ void iniciar_jogador_16882202(int id, int total) {
 
 void nova_rodada_jogador_16882202(int rodada, Carta carta_virada, int n_cartas, Carta* mao) {
     rodada_atual = rodada;
-    carta_manilha = definir_manilha(carta_virada).valor;
+    carta_manilha = definir_manilha(carta_virada);
     n_cartas_mao = n_cartas;
     for (int i = 0; i < n_cartas; i++) {
         minha_mao[i] = mao[i];
