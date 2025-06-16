@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c99
-JOGADORES = jogadores/aleatorio1.c jogadores/aleatorio2.c jogadores/simples.c jogadores/simples2.c 
+JOGADORES = jogadores/aleatorio1.c jogadores/aleatorio2.c jogadores/simples.c jogadores/jogador_16882202.c
 
 OBJ = baralho.o mao.o rodada.o jogo.o
 
@@ -19,4 +19,4 @@ teste_rodada: rodada.c baralho.c teste_rodada.c
 	$(CC) $(CFLAGS) -o teste_rodada rodada.c baralho.c teste_rodada.c
 
 clean:
-	rm -f *.o teste_baralho teste_mao
+	rm -f *.o teste_baralho teste_mao main
