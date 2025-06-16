@@ -17,7 +17,7 @@
 
 Jogo jogo;
 
-void imprimir_resultado_final(Jogo* jogo);
+void imprimir_resultado_final(Jogo* jogo, int* placar);
 
 void iniciar_jogadores() {
     jogo.nomes[0] = nome_aleatorio1();
@@ -103,9 +103,18 @@ int calcular_vencedor(Rodada* r, Jogada* jogadas) {
     return vencedor;
 }
 
+void imprimir_resultado_final(Jogo* jogo, int* placar) {
+    printf("\nPontuação final:\n");
+    for (int i = 0; i < jogo->num_jogadores; i++) {
+        printf("%s: %d pontos\n", jogo->nomes[i], placar[i]);
+    }
+}
+
 int main() {
     srand(time(NULL));
     iniciar_jogadores();
+
+    int placar[NUM_JOGADORES] = {0};
 
     embaralhar_e_distribuir_maos(&jogo.rodadas[0], jogo.num_jogadores, jogo.baralho);
 
@@ -122,9 +131,9 @@ int main() {
             processar_resultado_turno(r, vencedor);
         }
 
-        atualizar_pontuacoes(r, jogo.pontuacoes);
+        atualizar_pontuacoes(r, placar);
     }
 
-    imprimir_resultado_final(&jogo);
+    imprimir_resultado_final(&jogo, placar);
     return 0;
 }
