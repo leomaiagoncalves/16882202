@@ -51,8 +51,9 @@ void coletar_apostas(Rodada* r) {
     }
 
     for (int i = 0; i < jogo.num_jogadores; i++) {
-        int j = (jogo.jogador_inicial_rodada + i) % jogo.num_jogadores;
-
+        // int j = (jogo.jogador_inicial_rodada + i) % jogo.num_jogadores;
+        int j = i;
+        
         if (j == 0) r->apostas[j] = apostar_aleatorio1(r->apostas);
         else if (j == 1) r->apostas[j] = apostar_aleatorio2(r->apostas);
         else if (j == 2) r->apostas[j] = apostar_simples(r->apostas);
