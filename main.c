@@ -71,7 +71,7 @@ int processar_jogadas(Rodada* r, Jogada* jogadas) {
         if (j == 0) idx = jogar_aleatorio1((Carta*) jogadas, i);
         else if (j == 1) idx = jogar_aleatorio2((Carta*) jogadas, i);
         else if (j == 2) idx = jogar_simples((Carta*) jogadas, i);
-        else if (j == 3) idx = jogar_jogador_16882202((Carta*) jogadas, i);
+        else if (j == 3) idx = jogar_jogador_16882202((Carta*) jogadas, i, cartas_jogadas, n_cartas_restantes);
 
         if (checar_e_processar_descarte(idx, j, r, jogadas)) {
             printf("Jogador %s tentou descartar uma carta inválida e foi eliminado!\n", jogo.nomes[j]);
