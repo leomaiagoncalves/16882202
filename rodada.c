@@ -1,7 +1,8 @@
-#include <stdio.h>
-#include <string.h>
+#include "cartas.h"
 #include "rodada.h"
 #include "baralho.h"
+#include <stdio.h>
+#include <string.h>
 
 void distribuir_cartas(Rodada* r, int num_jogadores, Carta* baralho, int* idx) {
     for (int j = 0; j < num_jogadores; j++) {
@@ -67,4 +68,18 @@ void atualizar_pontuacoes(Rodada* r, int* placar) {
     for (int i = 0; i < r->num_jogadores; i++) {
         placar[i] += r->vitorias[i];
     }
+}
+
+// Função para calcular o vencedor de uma rodada, dado o vetor de jogadas
+int calcular_vencedor(Rodada* r, Jogada* jogadas) {
+    int vencedor = -1;
+    Carta carta_maior = { .valor = QUATRO, .naipe = OUROS }; // Carta inicial mínima
+    for (int i = 0; i < r->num_jogadores; i++) {
+        Carta c = jogadas[i].carta;
+        if (comparar_cartas(c, carta_maior, r->manilha) > 0) {
+            carta_maior = c;
+            vencedor = i;
+        }
+    }
+    return vencedor;
 }
