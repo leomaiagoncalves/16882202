@@ -31,6 +31,7 @@ void nova_rodada_jogador_16882202(int rodada, Carta carta_virada, int n_cartas, 
     n_cartas_mao = n_cartas;
     for (int i = 0; i < n_cartas; i++) {
         minha_mao[i] = mao[i];
+        printf("cartas: %s",mao[i]);
     }
 }
 
