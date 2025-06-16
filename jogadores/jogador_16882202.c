@@ -37,6 +37,7 @@ void nova_rodada_jogador_16882202(int rodada, Carta carta_virada, int n_cartas, 
 int apostar_jogador_16882202(int* apostas) {
     int aposta_base = 0;
     for (int i = 0; i < n_cartas_mao; i++) {
+        printf("ciclo %d",i);
         if (minha_mao[i].valor == carta_manilha) {
             aposta_base += 2;
         } else if (minha_mao[i].valor >= carta_manilha - 1) {
@@ -46,10 +47,12 @@ int apostar_jogador_16882202(int* apostas) {
     if (aposta_base > n_cartas_mao)
         aposta_base = n_cartas_mao;
     if ((rand() % 100) < 20 && aposta_base < n_cartas_mao) {
+        printf("Aumentar aleatorio");
         aposta_base++;
     }
     if (aposta_base == 0 && n_cartas_mao > 0) {
         aposta_base = 1;
+        printf("Apostar 1");
     }
     return aposta_base;
 }
