@@ -29,6 +29,9 @@ void processar_resultado_mao(int vencedor, Rodada* r);
 void executar_rodada(int rodada);
 void imprimir_resultado_final();
 void jogar_rodada(Rodada* r);
+void embaralhar_e_distribuir_maos(Jogo* jogo);
+void processar_resultado_turno(Rodada* r, Jogada* jogadas);
+void atualizar_pontuacoes(Rodada* r);
 
 extern void iniciar_jogadores();
 extern void informar_maos_para_jogadores(int rodada, const Rodada* r);
