@@ -35,10 +35,10 @@ void iniciar_jogadores() {
 }
 
 void informar_maos_para_jogadores(int rodada, const Rodada* r) {
-    nova_rodada_aleatorio1(rodada, r->carta_virada, r->cartas_por_jogador, r->maos[0]);
-    nova_rodada_aleatorio2(rodada, r->carta_virada, r->cartas_por_jogador, r->maos[1]);
-    nova_rodada_simples(rodada, r->carta_virada, r->cartas_por_jogador, r->maos[2]);
-    nova_rodada_jogador_16882202(rodada, r->carta_virada, r->cartas_por_jogador, r->maos[3]);
+    nova_rodada_aleatorio1(rodada, r->carta_virada, r->cartas_por_jogador, (Carta*) r->maos[0]);
+    nova_rodada_aleatorio2(rodada, r->carta_virada, r->cartas_por_jogador, (Carta*) r->maos[1]);
+    nova_rodada_simples(rodada, r->carta_virada, r->cartas_por_jogador, (Carta*) r->maos[2]);
+    nova_rodada_jogador_16882202(rodada, r->carta_virada, r->cartas_por_jogador, (Carta*) r->maos[3]);
 }
 
 void coletar_apostas(Rodada* r) {
@@ -68,17 +68,10 @@ int processar_jogadas(Rodada* r, Jogada* jogadas) {
         int j = (jogo.jogador_inicial_mao + i) % NUM_JOGADORES;
         int idx = -1;
 
-        if (j == 0) idx = jogar_aleatorio1(jogadas, i);
-        else if (j == 1) idx = jogar_aleatorio2(jogadas, i);
-        else if (j == 2) idx = jogar_simples(jogadas, i);
-        else if (j == 3) {
-            idx = jogar_jogador_16882202(
-                r->mesa,
-                r->num_na_mesa,
-                r->cartas_jogadas,
-                r->cartas_por_jogador
-            );
-        }
+        if (j == 0) idx = jogar_aleatorio1((Carta*) jogadas, i);
+        else if (j == 1) idx = jogar_aleatorio2((Carta*) jogadas, i);
+        else if (j == 2) idx = jogar_simples((Carta*) jogadas, i);
+        else if (j == 3) idx = jogar_jogador_16882202((Carta*) jogadas, i);
 
         if (checar_e_processar_descarte(idx, j, r, jogadas)) {
             printf("Jogador %s tentou descartar uma carta inválida e foi eliminado!\n", jogo.nomes[j]);
