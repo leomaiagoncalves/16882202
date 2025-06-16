@@ -6,7 +6,7 @@ JOGADORES = jogadores/aleatorio1.c jogadores/aleatorio2.c jogadores/simples.c jo
 OBJ = baralho.o mao.o rodada.o jogo.o jogadores/aleatorio1.o jogadores/aleatorio2.o jogadores/simples.o jogadores/jogador_16882202.o
 
 # Regra padrão para tudo (sem teste_baralho e teste_mao)
-all: main teste_rodada
+all: main 
 
 # Linka todos os objetos
 main: main.o $(OBJ)
