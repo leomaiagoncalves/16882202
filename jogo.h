@@ -1,5 +1,8 @@
 #ifndef JOGO_H
 #define JOGO_H
+#include "mao.h"
+#include "rodada.h"
+#include "baralho.h"
 
 #define MAX_JOGADORES 6
 #define NUM_RODADAS 5
