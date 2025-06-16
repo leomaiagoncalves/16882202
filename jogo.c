@@ -11,7 +11,7 @@ Jogo jogo;
 int checar_e_processar_descarte(int idx, int jogador, Rodada* r, Jogada* jogadas) {
     if (idx < 0 || idx >= r->cartas_por_jogador) {
         jogo.penalidades[jogador] = 9999;
-        jogadas[jogador].jogador_id = jogador;
+        jogadas[jogador].jogador = jogador;
         return 1;
     }
 
@@ -19,11 +19,11 @@ int checar_e_processar_descarte(int idx, int jogador, Rodada* r, Jogada* jogadas
 
     if (carta_foi_usada(carta_escolhida)) {
         jogo.penalidades[jogador] = 9999;
-        jogadas[jogador].jogador_id = jogador;
+        jogadas[jogador].jogador = jogador;
         return 1;
     }
 
-    jogadas[jogador].jogador_id = jogador;
+    jogadas[jogador].jogador = jogador;
     jogadas[jogador].carta = carta_escolhida;
 
     r->maos[jogador][idx] = USADA;
@@ -49,7 +49,7 @@ void imprimir_mesa(const Jogada* jogadas) {
     printf("Mesa:\n");
     for (int i = 0; i < jogo.num_jogadores; i++) {
         int j = (jogo.jogador_inicial_mao + i) % jogo.num_jogadores;
-        printf("%s:\t", jogo.nomes[jogadas[j].jogador_id]);
+        printf("%s:\t", jogo.nomes[jogadas[j].jogador]);
         imprimir_carta(jogadas[j].carta);
         printf("\n");
     }
