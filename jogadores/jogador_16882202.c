@@ -3,7 +3,7 @@
 #include <time.h>
 #include "../mao.h"
 
-Carta definir_manilha(Carta carta_virada);
+Valor definir_manilha(Carta carta_virada);
 
 static int meu_id;
 static int total_jogadores;
