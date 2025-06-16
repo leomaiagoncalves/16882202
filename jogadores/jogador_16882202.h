@@ -1,6 +1,7 @@
 #ifndef JOGADOR_16882202_H
 #define JOGADOR_16882202_H
 
+#include "../carta.h"
 #include "../mao.h"
 
 void iniciar_jogador_16882202(int id, int total);
