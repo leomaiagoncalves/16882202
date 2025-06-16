@@ -17,6 +17,8 @@
 
 Jogo jogo;
 
+void imprimir_resultado_final(Jogo* jogo);
+
 void iniciar_jogadores() {
     jogo.nomes[0] = nome_aleatorio1();
     jogo.nomes[1] = nome_aleatorio2();
@@ -88,10 +90,24 @@ int processar_jogadas(Rodada* r, Jogada* jogadas) {
     return novo_jogador_inicial;
 }
 
+int calcular_vencedor(Rodada* r, Jogada* jogadas) {
+    int vencedor = 0;
+    int maior_valor = -1;
+    for (int i = 0; i < jogo.num_jogadores; i++) {
+        int valor_carta = jogadas[i].carta.valor;
+        if (valor_carta > maior_valor) {
+            maior_valor = valor_carta;
+            vencedor = i;
+        }
+    }
+    return vencedor;
+}
+
 int main() {
     srand(time(NULL));
     iniciar_jogadores();
-    embaralhar_e_distribuir_maos(&jogo);
+
+    embaralhar_e_distribuir_maos(&jogo.rodadas[0], jogo.num_jogadores, jogo.baralho);
 
     for (int rodada = 0; rodada < jogo.num_rodadas; rodada++) {
         Rodada* r = &jogo.rodadas[rodada];
@@ -101,13 +117,14 @@ int main() {
         for (int turno = 0; turno < r->cartas_por_jogador; turno++) {
             Jogada jogadas[NUM_JOGADORES];
             jogo.jogador_inicial_mao = processar_jogadas(r, jogadas);
-            processar_resultado_turno(r, jogadas);
+
+            int vencedor = calcular_vencedor(r, jogadas);
+            processar_resultado_turno(r, vencedor);
         }
 
-        atualizar_pontuacoes(r);
+        atualizar_pontuacoes(r, jogo.pontuacoes);
     }
 
     imprimir_resultado_final(&jogo);
-
     return 0;
 }
