@@ -6,11 +6,11 @@
 #include "rodada.h"
 #include "mao.h"
 
-// Jogadores
-#include "jogadores/aleatorio1.c"
-#include "jogadores/aleatorio2.c"
-#include "jogadores/simples.c"
-#include "jogadores/jogador_16882202.c"
+#include "jogadores/aleatorio1.h"
+#include "jogadores/aleatorio2.h"
+#include "jogadores/simples.h"
+#include "jogadores/jogador_16882202.h"
+
 
 #define NUM_JOGADORES 4
 
