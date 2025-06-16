@@ -114,4 +114,3 @@ void imprimir_resultado_final(Jogo* jogo, int* placar) {
     for (int j = 0; j < jogo->num_jogadores; j++)
         printf("%s:\t%d\n", jogo->nomes[j], placar[j]);
 }
-}
