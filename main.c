@@ -17,8 +17,6 @@
 
 Jogo jogo;
 
-void imprimir_resultado_final(Jogo* jogo);
-
 void iniciar_jogadores() {
     jogo.nomes[0] = nome_aleatorio1();
     jogo.nomes[1] = nome_aleatorio2();
@@ -65,7 +63,7 @@ void coletar_apostas(Rodada* r) {
 
 int processar_jogadas(Rodada* r, Jogada* jogadas) {
     int novo_jogador_inicial = jogo.jogador_inicial_mao;
-    int cartas_jogadas[NUM_JOGADORES] = {0}; // cartas jogadas por cada jogador nesta mão
+    int cartas_jogadas[NUM_JOGADORES] = {0};
 
     for (int i = 0; i < jogo.num_jogadores; i++) {
         int j = (jogo.jogador_inicial_mao + i) % NUM_JOGADORES;
@@ -93,7 +91,7 @@ int processar_jogadas(Rodada* r, Jogada* jogadas) {
 int main() {
     srand(time(NULL));
     iniciar_jogadores();
-    embaralhar_e_distribuir_maos(&jogo.rodadas[0], jogo.num_jogadores, jogo.baralho);
+    embaralhar_e_distribuir_maos(&jogo);
 
     for (int rodada = 0; rodada < jogo.num_rodadas; rodada++) {
         Rodada* r = &jogo.rodadas[rodada];
@@ -110,5 +108,6 @@ int main() {
     }
 
     imprimir_resultado_final(&jogo);
+
     return 0;
 }
