@@ -9,6 +9,18 @@ all: main teste_baralho teste_mao teste_rodada
 main: main.c $(OBJ) $(JOGADORES)
 	$(CC) $(CFLAGS) -o main main.c $(OBJ) $(JOGADORES)
 
+baralho.o: baralho.c
+	$(CC) $(CFLAGS) -c baralho.c
+
+mao.o: mao.c
+	$(CC) $(CFLAGS) -c mao.c
+
+rodada.o: rodada.c
+	$(CC) $(CFLAGS) -c rodada.c
+
+jogo.o: jogo.c
+	$(CC) $(CFLAGS) -c jogo.c
+
 teste_baralho: baralho.c teste_baralho.c
 	$(CC) $(CFLAGS) -o teste_baralho baralho.c teste_baralho.c
 
