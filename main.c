@@ -17,10 +17,6 @@
 
 Jogo jogo;
 
-// corrigindo erro de warning
-void embaralhar_e_distribuir_maos(Jogo* jogo);
-void processar_resultado_turno(Rodada* r, Jogada* jogadas);
-void atualizar_pontuacoes(Rodada* r);
 void imprimir_resultado_final(Jogo* jogo);
 
 void iniciar_jogadores() {
