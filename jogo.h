@@ -14,6 +14,9 @@ typedef struct {
     int jogador_inicial_mao;
     int jogador_inicial_rodada;
     int num_jogadores;
+
+    int num_rodadas;          
+    Rodada rodadas[NUM_RODADAS];
 } Jogo;
 
 extern Jogo jogo;
@@ -26,7 +29,6 @@ void processar_resultado_mao(int vencedor, Rodada* r);
 void executar_rodada(int rodada);
 void imprimir_resultado_final();
 void jogar_rodada(Rodada* r);
-
 
 extern void iniciar_jogadores();
 extern void informar_maos_para_jogadores(int rodada, const Rodada* r);
