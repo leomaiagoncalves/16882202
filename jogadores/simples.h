@@ -2,6 +2,7 @@
 #define simples_H
 
 #include "../carta.h"
+#include "../mao.h"
 
 void iniciar_simples(int id, int total_jogadores);
 void nova_rodada_simples(int rodada, Carta carta_virada, int n_cartas, Carta* mao);
