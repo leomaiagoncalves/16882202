@@ -93,7 +93,7 @@ int processar_jogadas(Rodada* r, Jogada* jogadas) {
 int main() {
     srand(time(NULL));
     iniciar_jogadores();
-    embaralhar_e_distribuir_maos(&jogo);
+    embaralhar_e_distribuir_maos(&jogo.rodadas[0], jogo.num_jogadores, jogo.baralho);
 
     for (int rodada = 0; rodada < jogo.num_rodadas; rodada++) {
         Rodada* r = &jogo.rodadas[rodada];
