@@ -3,6 +3,7 @@
 #include <time.h>
 #include "../baralho.h"
 #include "../mao.h"
+#include "../carta.h"
 
 static int meu_id = 0;
 static int total_jogadores = 0;
@@ -12,7 +13,7 @@ static Carta minha_mao[6];
 void iniciar_aleatorio2(int id, int total) {
     meu_id = id;
     total_jogadores = total;
-    srand(time(NULL) + id * 202); // semente variada para cada jogador
+    srand(time(NULL) + id * 202);
 }
 
 void nova_rodada_aleatorio2(int rodada, Carta carta_virada, int n_cartas, Carta* mao) {
@@ -23,18 +24,21 @@ void nova_rodada_aleatorio2(int rodada, Carta carta_virada, int n_cartas, Carta*
 }
 
 int apostar_aleatorio2(const int* apostas) {
-    //  aleatória entre 0 e num_cartas
     return rand() % (num_cartas + 1);
 }
 
 int jogar_aleatorio2(const Carta* mesa, int num_na_mesa) {
-    // escolhe uma carta aleatória 
+    int tentativas = 0;
     int idx;
     do {
         idx = rand() % num_cartas;
-    } while (minha_mao[idx].valor == -1); // carta já usada
+        tentativas++;
+        if (tentativas > 100) {
+            return -1;
+        }
+    } while (minha_mao[idx].valor == USADA.valor && minha_mao[idx].naipe == USADA.naipe);
 
-    minha_mao[idx] = (Carta){-1, -1}; // marca como usada
+    minha_mao[idx] = USADA;
     return idx;
 }
 
