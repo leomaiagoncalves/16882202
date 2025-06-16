@@ -25,10 +25,10 @@ void iniciar_jogadores() {
     jogo.nomes[2] = nome_simples();
     jogo.nomes[3] = nome_jogador_16882202();
 
-    iniciar_aleatorio1(0, NUM_JOGADORES);
-    iniciar_aleatorio2(1, NUM_JOGADORES);
-    iniciar_simples(2, NUM_JOGADORES);
-    iniciar_jogador_16882202(3, NUM_JOGADORES);
+    iniciar_aleatorio1(0, jogo.num_jogadores);
+    iniciar_aleatorio2(1, jogo.num_jogadores);
+    iniciar_simples(2, jogo.num_jogadores);
+    iniciar_jogador_16882202(3, jogo.num_jogadores);
 
     memset(jogo.penalidades, 0, sizeof(jogo.penalidades));
     jogo.jogador_inicial_mao = jogo.jogador_inicial_rodada = 0;
@@ -46,12 +46,12 @@ void informar_maos_para_jogadores(int rodada, const Rodada* r) {
 void coletar_apostas(Rodada* r) {
     printf("Apostas:\n");
 
-    for (int i = 0; i < NUM_JOGADORES; i++) {
+    for (int i = 0; i < jogo.num_jogadores; i++) {
         r->apostas[i] = -1;
     }
 
-    for (int i = 0; i < NUM_JOGADORES; i++) {
-        int j = (jogo.jogador_inicial_rodada + i) % NUM_JOGADORES;
+    for (int i = 0; i < jogo.num_jogadores; i++) {
+        int j = (jogo.jogador_inicial_rodada + i) % jogo.num_jogadores;
 
         if (j == 0) r->apostas[j] = apostar_aleatorio1(r->apostas);
         else if (j == 1) r->apostas[j] = apostar_aleatorio2(r->apostas);
@@ -68,7 +68,7 @@ int processar_jogadas(Rodada* r, Jogada* jogadas) {
     int cartas_jogadas[NUM_JOGADORES] = {0};
 
     for (int i = 0; i < jogo.num_jogadores; i++) {
-        int j = (jogo.jogador_inicial_mao + i) % NUM_JOGADORES;
+        int j = (jogo.jogador_inicial_mao + i) % jogo.num_jogadores;
         int idx = -1;
         int n_cartas_restantes = r->cartas_restantes[j];
 
