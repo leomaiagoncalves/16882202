@@ -41,9 +41,5 @@ jogadores/simples.o: jogadores/simples.c
 jogadores/jogador_16882202.o: jogadores/jogador_16882202.c
 	$(CC) $(CFLAGS) -c jogadores/jogador_16882202.c -o jogadores/jogador_16882202.o
 
-# Teste de rodada (só esse)
-teste_rodada: rodada.c baralho.c teste_rodada.c
-	$(CC) $(CFLAGS) -o teste_rodada rodada.c baralho.c teste_rodada.c
-
 clean:
 	rm -f *.o jogadores/*.o teste_rodada main main.o
