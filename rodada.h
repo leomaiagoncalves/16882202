@@ -3,6 +3,14 @@
 
 #include "carta.h"
 
+#define MAX_JOGADORES 6
+#define MAX_CARTAS_MAO 6
+
+typedef struct {
+    Carta carta;
+    int jogador;
+} Jogada;
+
 typedef struct {
     int numero;
     int num_jogadores;
@@ -12,10 +20,10 @@ typedef struct {
     Carta carta_virada;
     Valor manilha;
 
-    Carta maos[5][6];
-    int cartas_restantes[5];
-    int apostas[5];
-    int vitorias[5];
+    Carta maos[MAX_JOGADORES][MAX_CARTAS_MAO];
+    int cartas_restantes[MAX_JOGADORES];
+    int apostas[MAX_JOGADORES];
+    int vitorias[MAX_JOGADORES];
     int pontos_acumulados;
 } Rodada;
 
