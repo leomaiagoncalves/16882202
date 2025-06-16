@@ -27,12 +27,8 @@ void imprimir_mesa(const Jogada* jogadas);
 void imprimir_resultados_rodada(int rodada, const Rodada* r);
 void processar_resultado_mao(int vencedor, Rodada* r);
 void executar_rodada(int rodada);
-void imprimir_resultado_final();
+void imprimir_resultado_final(Jogo* jogo, int* placar);  // <-- CORRIGIDO AQUI
 void jogar_rodada(Rodada* r);
 
 extern void iniciar_jogadores();
-extern void informar_maos_para_jogadores(int rodada, const Rodada* r);
-extern void coletar_apostas(Rodada* r);
-extern int processar_jogadas(Rodada* r, Jogada* jogadas);
-
-#endif
+extern void informar_maos_para_jogadores(int rod_
