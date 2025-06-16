@@ -15,14 +15,12 @@ typedef struct {
     int jogador_inicial_mao;
     int jogador_inicial_rodada;
     int num_jogadores;
-    int num_rodadas;
+    int num_rodadas;          
     Rodada rodadas[NUM_RODADAS];
 } Jogo;
 
-// Variável global que representa o estado do jogo
 extern Jogo jogo;
 
-// Funções principais do jogo
 int checar_e_processar_descarte(int idx, int jogador, Rodada* r, Jogada* jogadas);
 void imprimir_maos_jogadores(int rodada, const Rodada* r);
 void imprimir_mesa(const Jogada* jogadas);
@@ -32,14 +30,9 @@ void executar_rodada(int rodada);
 void imprimir_resultado_final();
 void jogar_rodada(Rodada* r);
 
-void embaralhar_e_distribuir_maos(Jogo* jogo);
-void processar_resultado_turno(Rodada* r, Jogada* jogadas);
-void atualizar_pontuacoes(Rodada* r);
-
-
-void iniciar_jogadores();
-void informar_maos_para_jogadores(int rodada, const Rodada* r);
-void coletar_apostas(Rodada* r);
-int processar_jogadas(Rodada* r, Jogada* jogadas);
+extern void iniciar_jogadores();
+extern void informar_maos_para_jogadores(int rodada, const Rodada* r);
+extern void coletar_apostas(Rodada* r);
+extern int processar_jogadas(Rodada* r, Jogada* jogadas);
 
 #endif
