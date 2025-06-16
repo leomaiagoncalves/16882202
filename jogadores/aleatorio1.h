@@ -2,6 +2,7 @@
 #define ALEATORIO1_H
 
 #include "../carta.h"
+#include "../mao.h"
 
 void iniciar_aleatorio1(int id, int total_jogadores);
 void nova_rodada_aleatorio1(int rodada, Carta carta_virada, int n_cartas, Carta* mao);
