@@ -56,7 +56,10 @@ void coletar_apostas(Rodada* r) {
         if (j == 0) r->apostas[j] = apostar_aleatorio1(r->apostas);
         else if (j == 1) r->apostas[j] = apostar_aleatorio2(r->apostas);
         else if (j == 2) r->apostas[j] = apostar_simples(r->apostas);
-        else if (j == 3) r->apostas[j] = apostar_jogador_16882202(r->apostas);
+        else if (j == 3){
+            print("Entrou Aposta");
+            r->apostas[j] = apostar_jogador_16882202(r->apostas)
+        };
 
         printf("%s:\t%d\n", jogo.nomes[j], r->apostas[j]);
     }
