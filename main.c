@@ -117,8 +117,14 @@ int main() {
 
     int placar[NUM_JOGADORES] = {0};
 
-    embaralhar_e_distribuir_maos(&jogo.rodadas[0], jogo.num_jogadores, jogo.baralho);
+   for (int rodada = 0; rodada < jogo.num_rodadas; rodada++) {
+    Rodada* r = &jogo.rodadas[rodada];
 
+    embaralhar_e_distribuir_maos(r, jogo.num_jogadores, jogo.baralho); // AQUI
+
+    informar_maos_para_jogadores(rodada, r);
+    coletar_apostas(r);
+    
     for (int rodada = 0; rodada < jogo.num_rodadas; rodada++) {
         Rodada* r = &jogo.rodadas[rodada];
         informar_maos_para_jogadores(rodada, r);
