@@ -115,5 +115,5 @@ int jogar_jogador_16882202(Carta* mesa, int num_na_mesa, int* cartas_jogadas, in
 }
 
 const char* nome_jogador_16882202(void) {
-    return "AnaliticoBlefador_16882202";
+    return "Jogador_16882202";
 }
