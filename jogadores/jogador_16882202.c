@@ -3,11 +3,6 @@
 #include <time.h>
 #include "../mao.h"
 
-// Definindo manilha: próximo valor (com módulo 13 para ciclo)
-Valor definir_manilha(Carta carta_virada) {
-    return (carta_virada.valor + 1) % 13;
-}
-
 // Variáveis internas do jogador
 static int meu_id;
 static int total_jogadores;
