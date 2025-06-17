@@ -25,10 +25,10 @@ void iniciar_jogadores() {
     jogo.nomes[2] = nome_simples();
     jogo.nomes[3] = nome_jogador_16882202();
 
-    iniciar_aleatorio1(0, jogo.num_jogadores);
-    iniciar_aleatorio2(1, jogo.num_jogadores);
-    iniciar_simples(2, jogo.num_jogadores);
-    iniciar_jogador_16882202(3, jogo.num_jogadores);
+    iniciar_aleatorio1(0, NUM_JOGADORES);
+    iniciar_aleatorio2(1, NUM_JOGADORES);
+    iniciar_simples(2, NUM_JOGADORES);
+    iniciar_jogador_16882202(3, NUM_JOGADORES);
 
     memset(jogo.penalidades, 0, sizeof(jogo.penalidades));
     jogo.jogador_inicial_mao = jogo.jogador_inicial_rodada = 0;
@@ -51,13 +51,12 @@ void coletar_apostas(Rodada* r) {
     }
 
     for (int i = 0; i < jogo.num_jogadores; i++) {
-       int j = (jogo.jogador_inicial_rodada + i) % jogo.num_jogadores;
-       
-        
+        int j = (jogo.jogador_inicial_rodada + i) % jogo.num_jogadores;
+
         if (j == 0) r->apostas[j] = apostar_aleatorio1(r->apostas);
         else if (j == 1) r->apostas[j] = apostar_aleatorio2(r->apostas);
         else if (j == 2) r->apostas[j] = apostar_simples(r->apostas);
-        else if (j == 3)r->apostas[j] = apostar_jogador_16882202(r->apostas);
+        else if (j == 3) r->apostas[j] = apostar_jogador_16882202(r->apostas);
 
         printf("%s:\t%d\n", jogo.nomes[j], r->apostas[j]);
     }
@@ -117,23 +116,16 @@ int main() {
 
     int placar[NUM_JOGADORES] = {0};
 
-   for (int rodada = 0; rodada < jogo.num_rodadas; rodada++) {
-    Rodada* r = &jogo.rodadas[rodada];
-
-    embaralhar_e_distribuir_maos(r, jogo.num_jogadores, jogo.baralho); // AQUI
-
-    informar_maos_para_jogadores(rodada, r);
-    coletar_apostas(r);
-    
     for (int rodada = 0; rodada < jogo.num_rodadas; rodada++) {
         Rodada* r = &jogo.rodadas[rodada];
+
+        embaralhar_e_distribuir_maos(r, jogo.num_jogadores, jogo.baralho);
         informar_maos_para_jogadores(rodada, r);
         coletar_apostas(r);
 
         for (int turno = 0; turno < r->cartas_por_jogador; turno++) {
             Jogada jogadas[NUM_JOGADORES];
             jogo.jogador_inicial_mao = processar_jogadas(r, jogadas);
-
             int vencedor = calcular_vencedor(r, jogadas);
             processar_resultado_turno(r, vencedor);
         }
